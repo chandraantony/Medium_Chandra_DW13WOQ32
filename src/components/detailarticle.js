@@ -93,7 +93,7 @@ export default function AutoGrid() {
             <Button className={classes.btn}><BookmarkIcon/></Button>
           </Grid>
         </Grid>
-      </Paper>
+        </Paper>
       <Typography>
         <p>
         Bla... Bla...Blaa.

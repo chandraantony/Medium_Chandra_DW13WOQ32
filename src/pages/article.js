@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import Nav from '../layout/nav';
 import DetailArticle from '../components/detailarticle'
 import DetailNav from '../layout/detailnav';
+import Footer from '../layout/footerarticle'
+import Related from '../layout/relatedarticle'
 
 
 class Article extends Component{
@@ -11,9 +13,11 @@ class Article extends Component{
         <Nav/>
         <DetailNav/>
         <DetailArticle/>
-      </div>
-      
-    );
+        <Related/>
+        <Footer/>
+       
+      </div>      
+    )
   }
 }
 export default Article;
