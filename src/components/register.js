@@ -7,10 +7,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import Login from './login';
-import Container from '@material-ui/core/Container';
-import { maxWidth } from '@material-ui/system';
 
-
+// Ini Register
 
 
 export default function FormDialog()  {
