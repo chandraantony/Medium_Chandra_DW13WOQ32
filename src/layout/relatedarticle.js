@@ -105,13 +105,66 @@ export default function SearchAppBar() {
                 </Card>
             </Grid>
             <Grid item xs={12} sm={4} >
-
+                <Card >
+                    <CardActionArea href="/Article">
+                        <CardMedia
+                        className={classes.media}
+                        image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
+                        />
+                    </CardActionArea>
+                    <Typography className={classes.spacing} >
+                        What We Should Have Learned in School But  Never Did
+                    </Typography>
+                    <Paper className={classes.paper} elevation ={0} >
+                        <Grid container >
+                        <Grid item sm={2} align="center">
+                            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
+                        </Grid>
+                        <Grid item  sm={7} >
+                            <Typography  style={{fontSize : "10pt"}}>Chandra Antonius Purba</Typography>
+                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Dec 11, 2019 . 10 min read</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
+                            <Button className={classes.btn}><ThumbUpIcon/></Button>
+                            69k
+                            <Button className={classes.btn}>|<BookmarkIcon/></Button>
+                        </Grid>
+                        </Grid>
+                    </Paper>
+                </Card>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} >
+                <Card >
+                    <CardActionArea href="/Article">
+                        <CardMedia
+                        className={classes.media}
+                        image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
+                        />
+                    </CardActionArea>
+                    <Typography className={classes.spacing} >
+                        What We Should Have Learned in School But  Never Did
+                    </Typography>
+                    <Paper className={classes.paper} elevation ={0} >
+                        <Grid container >
+                        <Grid item sm={2} align="center">
+                            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
+                        </Grid>
+                        <Grid item  sm={7} >
+                            <Typography  style={{fontSize : "10pt"}}>Chandra Antonius Purba</Typography>
+                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Dec 11, 2019 . 10 min read</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
+                            <Button className={classes.btn}><ThumbUpIcon/></Button>
+                            69k
+                            <Button className={classes.btn}>|<BookmarkIcon/></Button>
+                        </Grid>
+                        </Grid>
+                    </Paper>
+                </Card>
+            </Grid>
     
 
 
-            </Grid>
           </Grid>
           <hr  ></hr>
         </Container>

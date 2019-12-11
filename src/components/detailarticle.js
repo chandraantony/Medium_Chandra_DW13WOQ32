@@ -6,16 +6,14 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Avatar from '@material-ui/core/Avatar';
 import { Button } from '@material-ui/core';
-import IconButton from '@material-ui/core/IconButton';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import { classes } from 'istanbul-lib-coverage';
+
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -65,6 +63,7 @@ export default function AutoGrid() {
 
   return (
   <div className={classes.root}> 
+
     <Container maxWidth="md" >
         <ButtonBase >
            <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" />
@@ -80,7 +79,7 @@ export default function AutoGrid() {
         <Paper className={classes.paper} elevation ={0} >
         <Grid container >
           <Grid item sm={2} align="center">
-            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
+            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1920/1*bNjaA_7cA-VEplEfb4rdwQ.gif" /></Avatar>
           </Grid>
           <Grid item  sm={7} >
             <Typography style={{fontSize :"10pt"}} >Chandra Antonius P <Button variant="outlined" className={classes.btnsize} >FOLLOW</Button></Typography>

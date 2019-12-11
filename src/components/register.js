@@ -6,6 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
+import Login from './login';
+import Container from '@material-ui/core/Container';
 import { maxWidth } from '@material-ui/system';
 
 
@@ -28,10 +30,10 @@ export default function FormDialog()  {
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" align="center" maxWidth="md">     
       <Grid container spacing={0} >
-        <Grid item xs align="left">  
+        <Grid item item xs={12} sm={3} align="left">  
           <img src="https://miro.medium.com/max/214/1*4A5l12K8ize1400kV83dPw.png"></img>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
         <DialogTitle id="form-dialog-title">
             <h1>Join Medium.</h1>
             <DialogContentText style={{ fontSize:"10pt"}}>
@@ -60,21 +62,18 @@ export default function FormDialog()  {
             type="password"
             fullWidth
           />      
-          <Button onClick={handleClose}
-          style={{background : "black", color :"white", marginTop :"20px"}}>
-            Registration
-          </Button>
 
-        <p >Already have an account?<Button onClick={handleClose}
-          style={{background : "white", color :"Blue"}}>
-            SignUp
-          </Button></p> 
+          <p >Already have an account?
+          <Button style={{background : "white", color :"Blue"}}>
+            <Login/>
+          </Button>
+          </p> 
           <DialogContentText style={{marginBottom : "15px", fontSize:"10pt" }}>
           To make Medium work, we log user data and share it with service providers. Click “Sign Up” above to accept Medium’s Terms of Service & Privacy Policy.       
          </DialogContentText>
          </DialogContent>
         </Grid  >  
-        <Grid item xs align="right">
+        <Grid item item xs={12} sm={3} align="right">
           <img src="https://miro.medium.com/max/214/1*XVLaTKHOGlnXqvnPe2Ahaw.png"></img>
         </Grid>
       </Grid>  

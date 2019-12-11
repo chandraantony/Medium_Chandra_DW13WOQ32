@@ -27,15 +27,15 @@ export default function SearchAppBar() {
   const classes = useStyles();
     return (
       <div className={classes.root}>
-       <Container maxWidth="lg">
+       <Container maxWidth="md">
           <Grid container spacing={3} >
             <Grid item xs={12} sm={4}>
               <Paper className={classes.paper} >
                 <Typography variant="h9" className={classes.title}>
                 <b>Jambu</b>
                 </Typography> 
-                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"9pt"}}>
-                  Jenis Sayuran
+                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"8pt", paddingTop:"10pt",paddingBottom :"8pt", fontWeight:"bold" }}>
+                Jambu batu (Psidium guajava) atau sering juga disebut jambu biji, jambu siki dan jambu klutuk adalah tanaman tropis yang berasal dari Brasil, disebarkan ke Indonesia melalui Thailand. Jambu batu memiliki buah yang berwarna hijau dengan daging buah berwarna putih atau merah dan berasa asam-manis.
                 </Typography> 
               </Paper>
             </Grid>
@@ -44,8 +44,8 @@ export default function SearchAppBar() {
                 <Typography variant="h9" className={classes.title}>
                 <b>Jambu</b>
                 </Typography> 
-                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"9pt"}}>
-                  Jenis Sayuran
+                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"8pt", paddingTop:"10pt",paddingBottom :"8pt", fontWeight:"bold"}}>
+                Jambu batu (Psidium guajava) atau sering juga disebut jambu biji, jambu siki dan jambu klutuk adalah tanaman tropis yang berasal dari Brasil, disebarkan ke Indonesia melalui Thailand. Jambu batu memiliki buah yang berwarna hijau dengan daging buah berwarna putih atau merah dan berasa asam-manis.
                 </Typography> 
               </Paper>
             </Grid>
@@ -54,8 +54,8 @@ export default function SearchAppBar() {
                 <Typography variant="h9" className={classes.title}>
                 <b>Jambu</b>
                 </Typography> 
-                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"9pt"}}>
-                  Jenis Sayuran
+                <Typography variaon="caption" display="block" gutterBottom style={{fontSize :"8pt", paddingTop:"10pt",paddingBottom :"8pt", fontWeight:"bold"}}>
+                Jambu batu (Psidium guajava) atau sering juga disebut jambu biji, jambu siki dan jambu klutuk adalah tanaman tropis yang berasal dari Brasil, disebarkan ke Indonesia melalui Thailand. Jambu batu memiliki buah yang berwarna hijau dengan daging buah berwarna putih atau merah dan berasa asam-manis.
                 </Typography> 
               </Paper>
             </Grid>
