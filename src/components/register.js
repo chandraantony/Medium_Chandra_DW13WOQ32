@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import Login from './login';
 
-// Ini Register
+// SOURCE KODE REGISTER 
 
 
 export default function FormDialog()  {
