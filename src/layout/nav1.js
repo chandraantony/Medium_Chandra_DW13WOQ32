@@ -2,7 +2,9 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '@material-ui/core';
+import Link from '@material-ui/core/Link';
 
+// Code Soal Nomer 4 
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,23 +16,30 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function SearchAppBar() {
+const sections = [
+  { title: 'HOME', url: '/' },
+  { title: 'ONEZERO', url: '/Kategori' },
+  { title: 'ELEMENTAL', url: '#' },
+  { title: 'GEN', url: '#' },
+  { title: 'ZORA', url: '#' },
+  { title: 'FORGE', url: '#' },
+  { title: 'HUMAN PARTS', url: '#' },
+  { title: 'MARKER', url: '#' },
+  { title: 'LEVEL', url: '#' },
+  { title: 'HEATED', url: '#' },
+  { title: 'MODUS', url: '#' },
+  { title: 'MC', url: '#' },
+];
+
+export default function NavKategori() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor : "white", color:"black",}}>
         <div align="center">
-          <Button href="/">HOME</Button>
-          <Button href="/Kategori">ONZERO</Button>
-          <Button href="/Kategori">ELEMENTAL</Button>
-          <Button href="/Kategori">GEN</Button>
-          <Button href="/Kategori">ZORA</Button>
-          <Button href="/Kategori">FORGE</Button>
-          <Button href="/Kategori">HUMAN PARTS</Button>
-          <Button href="/Kategori">MARKER</Button>
-          <Button href="/Kategori">HEATED</Button>
-          <Button href="/Kategori">MODUS</Button>
-          <Button href="/Kategori">MORE</Button>
+        {sections.map(section => (
+        <Link href={section.url}><Button>{section.title}</Button></Link> 
+        ))}
         </div>
       </AppBar>
     
