@@ -60,13 +60,19 @@ const useStyles = makeStyles(theme => ({
   },
   media: {
     height: 300,
+    display: "flex",
+    flexDirection : "column",
+    justifyContent : "center",
+    minWidth : "100%",
+    
   },
   media1: {
-    height: 230,
+    height: 180,
+    
   },
   spacing: {
     padding: theme.spacing(2),
-    height: 200,
+    height: 150,
     margin: "auto"
   },
   stickToBottom: {
@@ -74,21 +80,18 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     bottom: 0,
   },
-  centerpos :{
+  
 
-    paddingTop: "50%",
-    paddingLeft: "50%",
-    transform: "translate(-50%, -50%)",
-  }
-}));
+
+  }));
 
 export default function AutoGrid() {
   const classes = useStyles();
 
   return (
   <div className={classes.root}> 
-    <Container maxWidth="lg">
-     <Grid container spacing={1} >
+    <Container maxWidth="md">
+     <Grid container spacing={1}  >
         <Grid item xs={12} >
         <Paper className={classes.card} >
         <Grid >
@@ -97,21 +100,18 @@ export default function AutoGrid() {
               </ButtonBase>
             </Grid>
           <Grid container spacing={0}>
-            <Grid item xs={12} sm >
+            <Grid item xs={12} sm={6} >
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs >
                 <div style={{paddingTop:"15pt"}} >
                   <Typography variant="h6" > 
                   <font color="#bf28a6">The front lines of the future.</font> A Medium publication about
-                  </Typography>
-                  
-                  </div>  
+                  </Typography>  
+                </div>  
                 </Grid>
-                
-              </Grid>
-              
+              </Grid>             
             </Grid>
-            <Grid item xs={3} sm >
+            <Grid item xs={3}  sm={6} >
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs >
                 <div style={{paddingTop:"30pt"}} >
@@ -127,33 +127,55 @@ export default function AutoGrid() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={3} style={{paddingTop :"20pt"}}>
-        <Grid item xs={7}>
+      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+        <Grid item xs={12} sm={7} >
         <Card>
         <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image="https://miro.medium.com/max/1958/1*KrWzdaB7HuC1mQvZnHmIDg.png"
+                image="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif"
                 />
         </CardActionArea>
         </Card>
         </Grid>
-        <Grid item xs={5}>
-          <Paper className={classes.media} >
-              <Typography >
-                  asdasdjasdisaud
-              </Typography>
-              <Typography >
-                  asdasdjasdisaud
-              </Typography>
+        <Grid item xs={12} sm={5}>
+          <Paper className={classes.media} style={{backgroundColor:"#00ffbf" }}>
+             <div align="center" style={{padding :"10pt"}} >
+                  <Typography variant="h7" > 
+                    <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
+                  </Typography>
+                  <Typography style={{fontSize :"10pt", }}> 
+                   <br></br>
+                   <p>- Megan Marrone</p> 
+                   <br/>
+                   Alexa Is My Problematic Fave
+                   <br/>
+                   Dec 9 . 6 min read
+                  </Typography>
+            </div> 
         </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{paddingTop :"20pt"}}>
-        <Grid item xs={5}>
-          <Paper className={classes.media} >asdasdasdasd</Paper>
+
+      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+        <Grid item xs={12} sm={5}>
+          <Paper className={classes.media} style={{backgroundColor:"#b3b3ff" }}>
+          <div style={{padding :"10pt"}} align="center" >
+                  <Typography variant="h7" > 
+                    <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
+                  </Typography>
+                  <Typography style={{fontSize :"10pt", }}> 
+                   <br></br>
+                   <p>- Megan Marrone</p> 
+                   <br/>
+                   Alexa Is My Problematic Fave
+                   <br/>
+                   Dec 9 . 6 min read
+                  </Typography>
+            </div> 
+          </Paper>
         </Grid>  
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={7}>
         <Card>
         <CardActionArea>
                 <CardMedia
@@ -167,39 +189,52 @@ export default function AutoGrid() {
       
       <Grid container spacing={1} style={{paddingTop :"20pt"}}>
         <Grid item xs={12} >
-        <Paper className={classes.card} style={{backgroundColor :"#5eff89"}} >
+        <Paper className={classes.card} style={{backgroundColor :"#ffffb3"}} >
         <Grid className={classes.image} >
             </Grid>
           <Grid container spacing={0}>
             <Grid item xs={12} sm >
               <Grid item xs container direction="column" spacing={2}>
                 <Grid item xs >
-                <div style={{padding :"30pt"}} >
-                  <Typography variant="h5" > 
-                    Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.
+                <div style={{padding :"20pt"}} >
+                  <Typography variant="h7" > 
+                    <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
                   </Typography>
-                  <Typography variant="h9" > 
+                  <Typography style={{fontSize :"10pt", }}> 
+                   <br></br>
                    <p>- Megan Marrone</p> 
                    <br/>
                    Alexa Is My Problematic Fave
                    <br/>
                    Dec 9 . 6 min read
                   </Typography>
-                </div>  
+                </div> 
                 </Grid>                
               </Grid>    
             </Grid>  
-            <Grid className={classes.image} >
-            </Grid>
           </Grid>
         </Paper>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{paddingTop :"20pt"}}>
-        <Grid item xs={5}>
-          <Paper className={classes.media} >asdasdasdasd</Paper>
+      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+        <Grid item xs={12} sm={5}>
+          <Paper className={classes.media} style={{backgroundColor :"#ffc6b3"}}  >
+          <div style={{padding :"10pt"}} align="center" >
+                  <Typography variant="h7" > 
+                    <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
+                  </Typography>
+                  <Typography style={{fontSize :"10pt", }}> 
+                   <br></br>
+                   <p>- Megan Marrone</p> 
+                   <br/>
+                   Alexa Is My Problematic Fave
+                   <br/>
+                   Dec 9 . 6 min read
+                  </Typography>
+          </div> 
+          </Paper>
         </Grid>  
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={7}>
         <Card>
         <CardActionArea>
                 <CardMedia
@@ -211,13 +246,26 @@ export default function AutoGrid() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={3} style={{paddingTop :"20pt"}}>
+      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
         <Grid item xs={12}>
         <Card>
         <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                image="https://miro.medium.com/max/7360/1*xVjj__UtEx3JZi0oX3BgCA.jpeg"
+                image="https://miro.medium.com/max/1280/1*b_7aV5Q_KjfkY6uVPby4Jg.gif"
+                />
+        </CardActionArea>
+        </Card>
+        </Grid>  
+      </Grid>
+
+      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+        <Grid item xs={12}>
+        <Card>
+        <CardActionArea>
+                <CardMedia
+                className={classes.media}
+                image="https://miro.medium.com/max/1920/1*bNjaA_7cA-VEplEfb4rdwQ.gif"
                 />
         </CardActionArea>
         </Card>
@@ -225,30 +273,30 @@ export default function AutoGrid() {
       </Grid>
 
       
-      <Container maxWidth="md" style={{paddingTop:"30pt", paddingBottom:"30pt"}} >
+      <Container maxWidth="sm" style={{paddingTop:"30pt", paddingBottom:"30pt"}} >
       <hr />
-      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
-        <Grid item xs={9}>
+      <Grid container spacing={0} style={{paddingTop :"10pt"}}>
+        <Grid item xs={12} sm={9}>
         <Paper className={classes.spacing}>
-            <Typography  variant="h5"  >
+            <Typography  variant="h8"  >
                     <b>The Joy Beign an Untethered Woman</b>
                 </Typography>
-                <Typography   variant="h7">
+            
+                <Typography style={{fontSize:"10pt"}}>
                     <br/>
-                <b>Beijing’s ‘autocracy as a service’ is becoming the top choice for governments that want to control the internet </b>          
+                Beijing’s ‘autocracy as a service’ is becoming the top choice for governments that want to control the internet        
                 </Typography>
                 <br/>
-                <Typography variant="h9" > 
+                <Typography style={{fontSize:"10pt"}}> 
                     <br/>
                     <font color="#bf28a6">Anna Graham Hunter in Human Parts</font>  
                 </Typography>
-                <Typography  variant="h9">
-                    <br/>
+                <Typography style={{fontSize:"10pt"}}>
                     Feb 19, 2017 . 7 min read .          
                 </Typography>
             </Paper>
         </Grid>  
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3}>
         <Card>
         <CardActionArea>
                 <CardMedia
@@ -260,104 +308,6 @@ export default function AutoGrid() {
         </Grid>
       </Grid>
 
-      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
-        <Grid item xs={9}>
-        <Paper className={classes.spacing}>
-            <Typography  variant="h5"  >
-                    <b>The Joy Beign an Untethered Woman</b>
-                </Typography>
-                <Typography   variant="h7">
-                    <br/>
-                <b>Beijing’s ‘autocracy as a service’ is becoming the top choice for governments that want to control the internet </b>          
-                </Typography>
-                <br/>
-                <Typography variant="h9" > 
-                    <br/>
-                    <font color="#bf28a6">Anna Graham Hunter in Human Parts</font>  
-                </Typography>
-                <Typography  variant="h9">
-                    <br/>
-                    Feb 19, 2017 . 7 min read .          
-                </Typography>
-            </Paper>
-        </Grid>  
-        <Grid item xs={3}>
-        <Card>
-        <CardActionArea>
-                <CardMedia
-                className={classes.media1}
-                image="https://miro.medium.com/max/7360/1*xVjj__UtEx3JZi0oX3BgCA.jpeg"
-                />
-        </CardActionArea>
-        </Card>
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
-        <Grid item xs={9}>
-        <Paper className={classes.spacing}>
-            <Typography  variant="h5"  >
-                    <b>The Joy Beign an Untethered Woman</b>
-                </Typography>
-                <Typography   variant="h7">
-                    <br/>
-                <b>Beijing’s ‘autocracy as a service’ is becoming the top choice for governments that want to control the internet </b>          
-                </Typography>
-                <br/>
-                <Typography variant="h9" > 
-                    <br/>
-                    <font color="#bf28a6">Anna Graham Hunter in Human Parts</font>  
-                </Typography>
-                <Typography  variant="h9">
-                    <br/>
-                    Feb 19, 2017 . 7 min read .          
-                </Typography>
-            </Paper>
-        </Grid>  
-        <Grid item xs={3}>
-        <Card>
-        <CardActionArea>
-                <CardMedia
-                className={classes.media1}
-                image="https://miro.medium.com/max/5514/1*PWGpuXNpkASi6_Sbio7WaQ.jpeg"
-                />
-        </CardActionArea>
-        </Card>
-        </Grid>
-      </Grid>
-
-      <Grid container spacing={0} style={{paddingTop :"20pt"}}>
-        <Grid item xs={9}>
-        <Paper className={classes.spacing}>
-            <Typography  variant="h5"  >
-                    <b>The Joy Beign an Untethered Woman</b>
-                </Typography>
-                <Typography   variant="h7">
-                    <br/>
-                <b>Beijing’s ‘autocracy as a service’ is becoming the top choice for governments that want to control the internet </b>          
-                </Typography>
-                <br/>
-                <Typography variant="h9" > 
-                    <br/>
-                    <font color="#bf28a6">Anna Graham Hunter in Human Parts</font>  
-                </Typography>
-                <Typography  variant="h9">
-                    <br/>
-                    Feb 19, 2017 . 7 min read .          
-                </Typography>
-            </Paper>
-        </Grid>  
-        <Grid item xs={3}>
-        <Card>
-        <CardActionArea>
-                <CardMedia
-                className={classes.media1}
-                image="https://miro.medium.com/max/3840/1*yYP8rlvTuCML1_N9AlQOTg.jpeg"
-                />
-        </CardActionArea>
-        </Card>
-        </Grid>
-      </Grid>
       
       </Container>
    </Container>

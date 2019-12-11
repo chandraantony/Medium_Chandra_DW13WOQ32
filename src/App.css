@@ -28,6 +28,25 @@
   color: #61dafb;
 }
 
+.menu-item {
+  position: sticky;
+  font-size: 12pt;
+  top :0;
+  padding: 0 20px;
+  margin: 5px 20px;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  font-family: sans-serif;
+  
+}
+
+ 
+.scroll-menu-arrow {
+  padding: 20px;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

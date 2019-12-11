@@ -73,16 +73,16 @@ export default function AutoGrid() {
   return (
   <Container maxWidth="lg" >
     <div className={classes.root} >
-      <Grid container spacing={3} >
-        <Grid item xs>
+      <Grid container spacing={3}>
+      <Grid item xs elevation={0}>
           <Card >
-            <CardActionArea>
+            <CardActionArea href="/Article">
                 <CardMedia
                 className={classes.media}
                 image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
                 />
             </CardActionArea>
-            <Paper className={classes.paper1}>
+            <Paper className={classes.paper1} >
             <Typography  variant="h5"  component="h2">
                     <b>The Joy Beign an Untethered Woman</b>
                 </Typography>
@@ -214,10 +214,10 @@ export default function AutoGrid() {
         </Grid>
       </Grid>
     </div>
+    <br/>
+    <br/>
     <Typography align="right" >
-    <Link style={{color :"#10c76b",fontSize:"11pt"}} href="#" onClick={preventDefault} color="inherit" >
-        SEE ALL FEATURED >
-      </Link>
+      <Button><b>SEE ALL FEATURED ></b></Button>
     </Typography>
     <br/>
     <hr color ="#c2b2b0"></hr>

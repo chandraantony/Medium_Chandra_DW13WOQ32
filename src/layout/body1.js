@@ -61,7 +61,7 @@ export default function AutoGrid() {
   const classes = useStyles();
 
   return (
-  <div className={classes.root}> 
+  <div className={classes.root} > 
     <Container maxWidth="lg">
      <Grid container spacing={1}>
      <Grid item xs style={{position: "sticky", top: "0", height: "100vh"}} > 
@@ -73,8 +73,11 @@ export default function AutoGrid() {
             </p>
         </Typography>
           <Grid container spacing={2}>
-            <Grid item>
-                <p style={{fontSize:"30pt"}}>01</p>
+            <Grid item text>
+               <p style={{fontSize:"30pt"}}>
+                <font color="gray">01</font> 
+              </p>
+       
             </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
@@ -100,7 +103,7 @@ export default function AutoGrid() {
         <Paper className={classes.paper1}>
           <Grid container spacing={2}>
             <Grid item>
-                <p style={{fontSize:"30pt"}}>02</p>
+            <p style={{fontSize:"30pt"}}><font color="gray">02</font></p>
             </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
@@ -126,7 +129,7 @@ export default function AutoGrid() {
         <Paper className={classes.paper1}>
           <Grid container spacing={2}>
             <Grid item>
-                <p style={{fontSize:"30pt"}}>03</p>
+            <p style={{fontSize:"30pt"}}><font color="gray">03</font></p>
             </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
@@ -152,7 +155,7 @@ export default function AutoGrid() {
         <Paper className={classes.paper1}>
           <Grid container spacing={2}>
             <Grid item>
-                <p style={{fontSize:"30pt"}}>04</p>
+            <p style={{fontSize:"30pt"}}><font color="gray">04</font></p>
             </Grid>
             <Grid item xs={12} sm container>
               <Grid item xs container direction="column" spacing={2}>
@@ -365,7 +368,7 @@ export default function AutoGrid() {
             </IconButton>
             <IconButton> 
                 <MoreHorizIcon /> 
-                </IconButton> 
+            </IconButton> 
             <ButtonBase className={classes.image} >
                 <img className={classes.img} alt="complex" src="https://miro.medium.com/max/2400/1*Q7VnYoqb2lVzx7sxOf93Bg.png" />
               </ButtonBase>

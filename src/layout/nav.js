@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,11 +11,12 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import Register from '../components/register';
-
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+   
   },
 
   linkspace: {
@@ -88,41 +89,42 @@ const useStyles = makeStyles(theme => ({
 
 export default function SearchAppBar() {
   const classes = useStyles();
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static" style={{backgroundColor : "white", color:"black",}}>
-        <Toolbar>
-          <Typography className={classes.title} variant="h5" noWrap>
-            Medium 
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+  
+    return (
+      <div className={classes.root}>
+        <AppBar elevation={0} position="static" style={{backgroundColor : "white", color:"black",}}>
+          <Toolbar>
+            <Typography className={classes.title} variant="h5" noWrap>
+                <Link href="/" style={{ textDecoration: 'none',color :"Black" }}>Medium</Link>
+            </Typography>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }} 
+              />
+              <Button>
+                <Register/>
+              </Button>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="default">
+                  <NotificationsIcon />  
+              </Badge>
+              </IconButton>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                  <AccountCircleIcon />   
+              </IconButton>  
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }} 
-            />
-            <Button>
-              <Register/>
-            </Button>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="default">
-                <NotificationsIcon />  
-            </Badge>
-            </IconButton>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-                <AccountCircleIcon />   
-            </IconButton>  
-          </div>
-        </Toolbar>
-      </AppBar>
-    
-    </div>
-  );
+          </Toolbar>
+        </AppBar>
+      
+      </div>
+    );  
+  
 }
