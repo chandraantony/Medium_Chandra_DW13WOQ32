@@ -22,14 +22,14 @@ const useStyles = makeStyles(theme => ({
   avatar:{
     height : 50,
     width : 50,
-    align : "center"
+    align : "center",
   },
   
   btn:{ 
     maxWidth: '30px', 
     maxHeight: '30px', 
     minWidth: '30px', 
-    minHeight: '30px'
+    minHeight: '30px',
   },
 
   btnsize:{
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: '20px',
     color:"#bf28a6",
     borderColor:"#bf28a6",
-    fontSize : "8pt"
+    fontSize : "8pt",
   },
 
   leftalign : {
@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
   avatar1:{
     height : 80,
     width : 80,
-    align : "center"
+    align : "center",
   },
 
   }));

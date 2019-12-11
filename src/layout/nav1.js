@@ -16,19 +16,19 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-const sections = [
-  { title: 'HOME', url: '/' },
-  { title: 'ONEZERO', url: '/Kategori' },
-  { title: 'ELEMENTAL', url: '#' },
-  { title: 'GEN', url: '#' },
-  { title: 'ZORA', url: '#' },
-  { title: 'FORGE', url: '#' },
-  { title: 'HUMAN PARTS', url: '#' },
-  { title: 'MARKER', url: '#' },
-  { title: 'LEVEL', url: '#' },
-  { title: 'HEATED', url: '#' },
-  { title: 'MODUS', url: '#' },
-  { title: 'MC', url: '#' },
+const listsections = [
+  { kategori: 'HOME', url: '/' },
+  { kategori: 'ONEZERO', url: '/Kategori' },
+  { kategori: 'ELEMENTAL', url: '#' },
+  { kategori: 'GEN', url: '#' },
+  { kategori: 'ZORA', url: '#' },
+  { kategori: 'FORGE', url: '#' },
+  { kategori: 'HUMAN PARTS', url: '#' },
+  { kategori: 'MARKER', url: '#' },
+  { kategori: 'LEVEL', url: '#' },
+  { kategori: 'HEATED', url: '#' },
+  { kategori: 'MODUS', url: '#' },
+  { kategori: 'MORE', url: '#' },
 ];
 
 export default function NavKategori() {
@@ -37,8 +37,8 @@ export default function NavKategori() {
     <div className={classes.root}>
       <AppBar position="static" style={{backgroundColor : "white", color:"black",}}>
         <div align="center">
-        {sections.map(section => (
-        <Link href={section.url}><Button>{section.title}</Button></Link> 
+        {listsections.map(section => (
+        <Link href={section.url}><Button>{section.kategori}</Button></Link> 
         ))}
         </div>
       </AppBar>
