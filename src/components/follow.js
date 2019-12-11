@@ -114,18 +114,13 @@ export default function AutoGrid() {
           <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Bio here ....</Typography>
           </Grid>
           <Grid item  sm={2} >   
-          <Button variant="outlined" >FOLLOW</Button>
+          <Button variant="outlined"  >FOLLOW</Button>
           </Grid>
         </Grid>
         <br/>
         <center>
-        <Button variant="outlined"  color="secondary">SEE MORE</Button>
+        <Button variant="outlined"  color="secondary" href="/Comment">SEE MORE</Button>
         </center>
-
-
-        
-
-
         </Paper>
       </Container>
   </div>

@@ -25,7 +25,8 @@ export default function FormDialog()  {
       </Button>
       <Dialog open={open} onClose={handleClose1} aria-labelledby="form-dialog-title" align="center" maxWidth="md">     
       <Grid container spacing={0} >
-        <Grid item xs={12} sm={3} align="left">  
+        <Grid item xs={12} sm={3} align="left"> 
+         
         </Grid>
         <Grid item xs={12} sm={6}>
         <DialogTitle id="form-dialog-title">
