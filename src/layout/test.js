@@ -37,7 +37,8 @@ const Arrow = ({ text, className }) => {
   return (
     <div
       className={className}
-    >{text}</div>
+    >{text}
+    </div>
   );
 };
  
@@ -76,6 +77,7 @@ class Test extends Component {
           arrowRight={ArrowRight}
           selected={selected}
           onSelect={this.onSelect}
+
         />
       </div>
     );

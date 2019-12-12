@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   
   btn:{ 
-    maxWidth: '30px', 
+    maxWidth: '20px', 
     maxHeight: '30px', 
     minWidth: '30px', 
     minHeight: '30px'
@@ -69,7 +69,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function SearchAppBar() {
+export default function RelateArticle() {
   const classes = useStyles();
     return (
       <div className={classes.root}>
@@ -98,7 +98,7 @@ export default function SearchAppBar() {
                         <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
                             <Button className={classes.btn}><ThumbUpIcon/></Button>
                             69k
-                            <Button className={classes.btn}>|<BookmarkIcon/></Button>
+                            <Button className={classes.btn}><BookmarkIcon/></Button>
                         </Grid>
                         </Grid>
                     </Paper>
@@ -127,7 +127,7 @@ export default function SearchAppBar() {
                         <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
                             <Button className={classes.btn}><ThumbUpIcon/></Button>
                             69k
-                            <Button className={classes.btn}>|<BookmarkIcon/></Button>
+                            <Button className={classes.btn}><BookmarkIcon/></Button>
                         </Grid>
                         </Grid>
                     </Paper>
@@ -156,7 +156,7 @@ export default function SearchAppBar() {
                         <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
                             <Button className={classes.btn}><ThumbUpIcon/></Button>
                             69k
-                            <Button className={classes.btn}>|<BookmarkIcon/></Button>
+                            <Button className={classes.btn}><BookmarkIcon/></Button>
                         </Grid>
                         </Grid>
                     </Paper>

@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function SearchAppBar() {
+export default function DetailNav() {
   const classes = useStyles();
   return (
     <div className={classes.root}>

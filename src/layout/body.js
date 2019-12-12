@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function AutoGrid() {
+export default function ContentHome() {
   const classes = useStyles();
   return (
   <Container maxWidth="lg" >

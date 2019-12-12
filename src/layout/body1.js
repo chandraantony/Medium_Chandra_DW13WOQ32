@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function AutoGrid() {
+export default function ContentHome1() {
   const classes = useStyles();
 
   return (

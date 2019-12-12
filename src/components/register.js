@@ -11,7 +11,7 @@ import Login from './login';
 // SOURCE KODE REGISTER 
 
 
-export default function FormDialog()  {
+export default function Register()  {
 
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -62,7 +62,7 @@ export default function FormDialog()  {
           />      
 
           <p >Already have an account?
-          <Button style={{background : "white", color :"Blue"}}>
+          <Button  onClick={handleClickOpen} style={{background : "white", color :"Blue"}}>
             <Login/>
           </Button>
           </p> 

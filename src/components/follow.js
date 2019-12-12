@@ -59,12 +59,12 @@ const useStyles = makeStyles(theme => ({
 
   }));
 
-export default function AutoGrid() {
+export default function Follow() {
   const classes = useStyles();
 
   return (
   <div className={classes.root}> 
-      <Container maxWidth="sm" style={{paddingTop:"20pt", paddingBottom:"100pt"}}>
+      <Container maxWidth="sm" style={{paddingTop:"20pt", paddingBottom:"50pt"}}>
           
         <Paper className={classes.paper} elevation={0} >
         <Typography>
@@ -119,7 +119,9 @@ export default function AutoGrid() {
         </Grid>
         <br/>
         <center>
+        <div style ={{flex: '1' , flexDirection : 'column', display : 'flex'}}>
         <Button variant="outlined"  color="secondary" href="/Comment">SEE MORE</Button>
+        </div>
         </center>
         </Paper>
       </Container>

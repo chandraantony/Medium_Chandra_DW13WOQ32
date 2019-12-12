@@ -1,17 +1,17 @@
 import React,{Component} from 'react';
 import Nav from '../layout/nav';
-import Combox from '../components/commentbody';
+import Status from '../components/statbody';
 
 
-class Comment extends Component{
+class Stat extends Component{
   render(){
     return(
       <div>
         <Nav/>
-        <Combox/>
+        <Status/>
       </div>
       
     );
   }
 }
-export default Comment;
+export default Stat;

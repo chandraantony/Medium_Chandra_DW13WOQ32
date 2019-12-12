@@ -8,22 +8,22 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 
 
-export default function FormDialog()  {
+export default function Login()  {
 
-  const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
   const handleClickOpen1 = () => {
-    setOpen(true);
+    setOpen1(true);
   };
 
   const handleClose1 = () => {
-    setOpen(false);
+    setOpen1(false);
   };
   return (
     <div >
       <Button variant="outlined" color="primary" onClick={handleClickOpen1} >
         LOGIN
       </Button>
-      <Dialog open={open} onClose={handleClose1} aria-labelledby="form-dialog-title" align="center" maxWidth="md">     
+      <Dialog open={open1} onClose={handleClose1} aria-labelledby="form-dialog-title" align="center" maxWidth="md">     
       <Grid container spacing={0} >
         <Grid item xs={12} sm={3} align="left"> 
          
