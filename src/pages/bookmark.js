@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import Nav from '../layout/nav';
-import Bookmarkbody from '../components/bookmarkbody';
+import Nav from '../layout/Nav';
+import BookmarkBody from '../components/Bookmark';
 
 
 
@@ -10,7 +10,7 @@ class Bookmark extends Component{
     return(
       <div>
         <Nav/>
-        <Bookmarkbody></Bookmarkbody>
+        <BookmarkBody/>
       </div>
     );
   }

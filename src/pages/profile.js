@@ -1,18 +1,16 @@
 import React,{Component} from 'react';
-import Nav from '../layout/nav';
-import Prof from '../components/profilbody';
-import ArticleBy from '../components/articleby';
 
-
-
+import ArticleList from '../components/ArticleList';
+import ProfileBar from '../components/ProfileBar';
+import Nav from '../layout/Nav';
 
 class Profile extends Component{
   render(){
     return(
-      <div>
+      <div>  
         <Nav/>
-        <Prof/>
-        <ArticleBy/>
+        <ProfileBar/>
+        <ArticleList/>
       </div>
     );
   }

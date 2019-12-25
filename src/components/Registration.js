@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
+
 import {withStyles} from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+
 import Grid from '@material-ui/core/Grid';
+
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios'
+import axios from 'axios';
+import Login from './Login';
 
 
 const MyStyle = (theme => ({
+
   margintop: {
     margin: theme.spacing(2),
   },
@@ -22,7 +28,11 @@ const MyStyle = (theme => ({
   btnnomargin : {
     borderColor : "#00b36b",
     color : "#00b36b",
-  }
+  },
+  bgopacity :{
+    
+  },
+
 
 
 
@@ -32,35 +42,23 @@ const MyStyle = (theme => ({
 
 class Registrasi extends Component{
   constructor(){
-    super();          
+    super();
+    this.child = React.createRef();
     this.state ={
-      login : false
-     
+      modalregis : false,
+      fullname : '',
+      email : '',
+      password : '',
     }
-    console.log(this.state.login)
+    
   }
 
-  closehandle = () => {
-    this.setState(
-      {
-        login : false,
-        email: '',
-        password: ''
-      }
-    )
-  };
-
-  openLogin = () => {
-    this.setState(
-      {
-        login : true,
-        
-      }
-    )
-    console.log(this.state.login)
-  };
-
-
+  handleChangeName = (event) => {
+    this.setState({
+      fullname: event.target.value
+    })
+  }
+  
   handleChangeMail = (event) => {
     this.setState({
       email: event.target.value
@@ -73,44 +71,63 @@ class Registrasi extends Component{
     })
   }
 
+  closehandle = () => {
+    this.setState(
+      {
+        modalregis : false,
+      }
+    )
+  };
 
-  handleLogin = () => {
-    axios.post('http://localhost:5000/api/v1/login', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(res => {
-      console.log(res.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+  openRegis = () => {
+    this.setState(
+      {
+        modalregis : true,
+      }
+    )
+  };
+  
+  onClick = () => {
+
+   
+    this.child.current.openLogin();
+
+  };
+
+  
+  componentDidMount(){
   }
 
   render(){
 
     const {classes} = this.props;
-    
-
-
     return(
-        <div>
-        <Dialog open={this.state.login} onClose={ () =>
-        this.props.closeall()} aria-labelledby="form-dialog-title" align="center" maxWidth="md" style={{backgroundColor: 'transparent'}} fullWidth> 
+        <div  >
+        
+        <Dialog  open={this.state.modalregis} onClose={this.closehandle} aria-labelledby="form-dialog-title" align="center"  maxWidth="md"  fullWidth> 
         <Grid container >
         <Grid item xs={12} sm={3} align="left">
-         
+      
         </Grid>
         <Grid item xs={12} sm={6}>
-        <Typography variant="h4" style={{paddingTop : "20pt"}}>Login Medium</Typography>
-        <Typography className={classes.margintop} color="textSecondary" variant="caption">Login to personalized story recommendations, follow authors and topics you love, and interact with stories.</Typography>
+        <Typography variant="h4" style={{paddingTop : "20pt"}}>Join Medium</Typography>
+        <Typography className={classes.margintop} color="textSecondary" variant="caption">Sign in to get personalized story recommendations, follow authors and topics you love, and interact with stories.</Typography>
         <DialogContent style={{fontSize:"10pt"}}>       
-        <br/>
-        <br/> 
-            <div className={classes.margintop} style={{paddingTop:"30px"}}>
+        
+            <div className={classes.margintop}>
+            <InputLabel htmlFor="standard-adornment-password">Your Name</InputLabel>
+            <Input
+              onChange={this.handleChangeName}
+              fullWidth
+              label="Your Name"
+              id="standard-adornment-password"
+              type='email'
+              />
+            </div>   
+          
+            <div className={classes.margintop}>
             <InputLabel htmlFor="standard-adornment-password">Your Mail</InputLabel>
             <Input
-              value={this.state.email}
               onChange={this.handleChangeMail}
               fullWidth
               label="Your Mail"
@@ -122,7 +139,6 @@ class Registrasi extends Component{
             <div className={classes.margintop}>
             <InputLabel htmlFor="standard-adornment-password">Your Password</InputLabel>
             <Input
-              value={this.state.password} 
               onChange={this.handleChangePassword}
               fullWidth
               label="Your Password"
@@ -130,19 +146,18 @@ class Registrasi extends Component{
               type='password'
               />
             </div>  
-            <br/>
-            <Button variant="outlined" className={classes.buttonstyle} onClick={this.handleLogin} >Login</Button>
-            <br/>
-            <br/>
-            <Typography className={classes.margintop}> Not Have Account ? <Button className={classes.btnnomargin} onClick={this.closehandle}>
-            Register
+            <Login ref={this.child} closeall={this.closehandle}></Login>
+            <Button variant="outlined" className={classes.buttonstyle}  >Registrasi</Button>
+            <Typography className={classes.margintop}>Already Have Account 
+            <Button onClick={this.onClick} className={classes.btnnomargin}>
+            Login
             </Button>
             </Typography>
             <Typography variant="caption">To make Medium work, we log user data and share it with service providers. Click “Sign Up” above to accept Medium’s Terms of Service & Privacy Policy.</Typography>
           </DialogContent>
         </Grid>
         <Grid item xs={12} sm={3} align="right">
-       
+
         </Grid>
       </Grid>
       </Dialog>

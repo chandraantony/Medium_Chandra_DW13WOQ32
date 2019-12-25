@@ -1,17 +1,23 @@
 import React,{Component} from 'react';
-import Nav from '../layout/nav';
-import Nav1 from '../layout/nav1';
-import Onzero from '../components/onzero';
-import Footer from '../layout/footer';
-import Follow from '../components/follow';
+import Nav from '../layout/Nav';
+import Footer from '../layout/Footer';
+import CategoryBody from '../components/CategoryBody';
+
 
 
 class Kategori extends Component{
+  constructor(){
+    super();
+    this.state= {
+     
+    }
+  }
   render(){
-    return(
-      <div>
+    const {id} = this.props.match.params;
+     return(
+      <div>  
         <Nav/>
-        <Onzero/>
+        <CategoryBody jambuid = {id}/>
         <Footer/>
       </div>
     );

@@ -1,17 +1,17 @@
 import React,{Component} from 'react';
-import Nav from './layout/nav';
-import Container from './layout/body';
-import Container1 from './layout/body1';
-import Nav1 from './layout/nav1';
+import Nav from './layout/Nav';
+import NavKategori from './layout/Navkategori';
+import BodyHome from './components/BodyHome';
+import BodyHome1 from './components/BodyHome1';
 
 class App extends Component{
   render(){
     return(
       <div>
         <Nav/>
-        <Nav1/>
-        <Container></Container>
-        <Container1></Container1>
+        <NavKategori/>
+        <BodyHome/>
+        <BodyHome1/>
       </div>
       
     );

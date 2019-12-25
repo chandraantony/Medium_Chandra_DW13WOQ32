@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import Nav from '../layout/nav';
-import Combox from '../components/commentbody';
+import Nav from '../layout/Nav';
+import CommentView from '../components/CommentView';
+
 
 
 class Comment extends Component{
@@ -8,7 +9,7 @@ class Comment extends Component{
     return(
       <div>
         <Nav/>
-        <Combox/>
+        <CommentView/>
       </div>
       
     );

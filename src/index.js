@@ -12,20 +12,22 @@ import Addstory from './pages/addstory';
 import Story from './pages/story';
 import Bookmark from './pages/bookmark';
 import Stat from './pages/stat';
+import Home from './pages/home';
 
 
-ReactDOM.render(
-                <Router>
+ReactDOM.render( //<App/>  , document.getElementById('root'));
+               <Router>
                     <Switch>
                         <Route exact path='/' component={App} ></Route>
-                        <Route path='/Kategori' component={Kategori} ></Route>
-                        <Route path='/Article' component={Article}></Route>
-                        <Route path='/Comment' component={Comment}></Route>
-                        <Route path='/Profile' component={Profile}></Route>
-                        <Route path='/AddStory' component ={Addstory}></Route>
-                        <Route path='/Story' component={Story}></Route>
-                        <Route path='/Bookmark' component={Bookmark}></Route>
-                        <Route path="/Stat" component={Stat}></Route>
+                        <Route path='/home' component={Home} ></Route>
+                        <Route path='/kategori/:id/article' component={Kategori} ></Route>
+                        <Route path='/article/:id' component={Article}></Route>
+                        <Route path='/comment' component={Comment}></Route>
+                        <Route path='/profile' component={Profile}></Route>
+                        <Route path='/addStory' component ={Addstory}></Route>
+                        <Route path='/story' component={Story}></Route>
+                        <Route path='/bookmark' component={Bookmark}></Route>
+                        <Route path="/stat" component={Stat}></Route>
                     </Switch>
                 </Router>            
     , document.getElementById('root'));

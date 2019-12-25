@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -11,10 +11,10 @@ import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
+import axios from 'axios';
+import Moment from 'react-moment';
 
-
-
-const useStyles = makeStyles(theme => ({
+const useStyles = (theme => ({
   root: {
     flexGrow: 1,
   },
@@ -69,108 +69,68 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function RelateArticle() {
-  const classes = useStyles();
-    return (
-      <div className={classes.root}>
-       <Container maxWidth="lg" >
-          <Grid container spacing={3} elevation={0}>
-            <Grid item xs={12} sm={4} >
-                <Card >
-                    <CardActionArea href="/Article">
-                        <CardMedia
-                        className={classes.media}
-                        image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
-                        />
-                    </CardActionArea>
-                    <Typography className={classes.spacing} >
-                        What We Should Have Learned in School But  Never Did
-                    </Typography>
-                    <Paper className={classes.paper} elevation ={0} >
-                        <Grid container >
-                        <Grid item sm={2} align="center">
-                            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
-                        </Grid>
-                        <Grid item  sm={7} >
-                            <Typography  style={{fontSize : "10pt"}}>Chandra Antonius Purba</Typography>
-                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Dec 11, 2019 . 10 min read</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
-                            <Button className={classes.btn}><ThumbUpIcon/></Button>
-                            69k
-                            <Button className={classes.btn}><BookmarkIcon/></Button>
-                        </Grid>
-                        </Grid>
-                    </Paper>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={4} >
-                <Card >
-                    <CardActionArea href="/Article">
-                        <CardMedia
-                        className={classes.media}
-                        image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
-                        />
-                    </CardActionArea>
-                    <Typography className={classes.spacing} >
-                        What We Should Have Learned in School But  Never Did
-                    </Typography>
-                    <Paper className={classes.paper} elevation ={0} >
-                        <Grid container >
-                        <Grid item sm={2} align="center">
-                            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
-                        </Grid>
-                        <Grid item  sm={7} >
-                            <Typography  style={{fontSize : "10pt"}}>Chandra Antonius Purba</Typography>
-                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Dec 11, 2019 . 10 min read</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
-                            <Button className={classes.btn}><ThumbUpIcon/></Button>
-                            69k
-                            <Button className={classes.btn}><BookmarkIcon/></Button>
-                        </Grid>
-                        </Grid>
-                    </Paper>
-                </Card>
-            </Grid>
-            <Grid item xs={12} sm={4} >
-                <Card >
-                    <CardActionArea href="/Article">
-                        <CardMedia
-                        className={classes.media}
-                        image="https://miro.medium.com/max/3436/1*V7Si4unlnDsQ03Hg674y_A.jpeg"
-                        />
-                    </CardActionArea>
-                    <Typography className={classes.spacing} >
-                        What We Should Have Learned in School But  Never Did
-                    </Typography>
-                    <Paper className={classes.paper} elevation ={0} >
-                        <Grid container >
-                        <Grid item sm={2} align="center">
-                            <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif" /></Avatar>
-                        </Grid>
-                        <Grid item  sm={7} >
-                            <Typography  style={{fontSize : "10pt"}}>Chandra Antonius Purba</Typography>
-                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>Dec 11, 2019 . 10 min read</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
-                            <Button className={classes.btn}><ThumbUpIcon/></Button>
-                            69k
-                            <Button className={classes.btn}><BookmarkIcon/></Button>
-                        </Grid>
-                        </Grid>
-                    </Paper>
-                </Card>
-            </Grid>
+class RelatedArticle extends Component{
+  constructor(){
+    super();
+    this.state = {
+      article: []
+    }
     
+  }
 
+  componentDidMount(){
+    axios.get(`http://localhost:5000/api/v1/articles/popular`)
+      .then(res => {
+        const article = res.data;
+        this.setState({ article });
+      })
 
-          </Grid>
-          <hr  ></hr>
-        </Container>
+  }
+  render(){
+    const {classes} = this.props
+    return(
+      <div className={classes.root}>
+          <Container maxWidth="lg" >
+            <Grid container spacing={3} elevation={0}>
+            {this.state.article.slice(0,3).map(section => (
+              <Grid item xs={12} sm={4} key={section.id} >
+                  <Card >
+                      <CardActionArea href="/Article" >
+                          <CardMedia
+                          className={classes.media}
+                          image={section.image}
+                          />
+                      </CardActionArea>
+                      <Typography className={classes.spacing} >
+                          {section.title}
+                      </Typography>
+                      <Paper className={classes.paper} elevation ={0} >
+                          <Grid container >
+                          <Grid item sm={2} align="center">
+                              <Avatar className={classes.avatar}> <img className={classes.img} alt="complex" src={section.image} /></Avatar>
+                          </Grid>
+                          <Grid item  sm={7} >
+                              <Typography  style={{fontSize : "10pt"}}>{section.author_Id.fullname}</Typography>
+                              <Typography  color="textSecondary" style={{fontSize : "8pt"}}><Moment format="D MMM YYYY">{section.createdAt}</Moment></Typography>
+                          </Grid>
+                          <Grid item xs={12} sm={3} align="right" style={{paddingTop:"10pt"}} >
+                              <Button className={classes.btn}><ThumbUpIcon/></Button>
+                              69k
+                              <Button className={classes.btn}><BookmarkIcon/></Button>
+                          </Grid>
+                          </Grid>
+                      </Paper>
+                  </Card>
+              </Grid>
+            ),)}
+    
+            </Grid>
+            <hr  ></hr>
+          </Container>
 
-      </div>
-      
-    );  
-  
+        </div>
+    )
+  }
 }
+
+export default withStyles(useStyles)(RelatedArticle)

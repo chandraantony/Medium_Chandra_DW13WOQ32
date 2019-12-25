@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Nav from '../layout/nav';
-import Adds from '../components/story';
+import Nav from '../layout/Nav';
+import AddStoryBody from '../components/AddStoryBody';
 
 class Addstory extends Component{
   render(){
     return(
       <div>
         <Nav/>
-        <Adds/>
+        <AddStoryBody/>
       </div>
     );
   }
