@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-
+import setAuth from '../auth/authorize'
 import Grid from '@material-ui/core/Grid';
 
 import Input from '@material-ui/core/Input';
@@ -11,9 +11,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import axios from 'axios';
-import Login from './Login';
 
+import Login from './Login';
+import axios from 'axios';
 
 const MyStyle = (theme => ({
 
@@ -94,6 +94,29 @@ class Registrasi extends Component{
 
   };
 
+  handleSignup = (event) => {
+    axios.post('http://localhost:5000/api/v1/register', {
+      fullname : this.state.fullname,
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(res => {
+      const token = res.data.token
+      localStorage.setItem('Secret-Code', token)
+      
+      if(token){
+        console.log(token)
+        setAuth(token);
+      }else{
+        console.log(res.data)
+      }
+
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    event.preventDefault();
+  }
   
   componentDidMount(){
   }
@@ -104,10 +127,10 @@ class Registrasi extends Component{
     return(
         <div  >
         
-        <Dialog  open={this.state.modalregis} onClose={this.closehandle} aria-labelledby="form-dialog-title" align="center"  maxWidth="md"  fullWidth> 
+        <Dialog open={this.state.modalregis} onClose={this.closehandle} aria-labelledby="form-dialog-title" align="center"  maxWidth="md"  fullWidth> 
         <Grid container >
         <Grid item xs={12} sm={3} align="left">
-      
+          <img alt="left" src="https://miro.medium.com/max/214/1*4A5l12K8ize1400kV83dPw.png" />
         </Grid>
         <Grid item xs={12} sm={6}>
         <Typography variant="h4" style={{paddingTop : "20pt"}}>Join Medium</Typography>
@@ -118,6 +141,7 @@ class Registrasi extends Component{
             <InputLabel htmlFor="standard-adornment-password">Your Name</InputLabel>
             <Input
               onChange={this.handleChangeName}
+              value =  {this.state.fullname}
               fullWidth
               label="Your Name"
               id="standard-adornment-password"
@@ -129,6 +153,7 @@ class Registrasi extends Component{
             <InputLabel htmlFor="standard-adornment-password">Your Mail</InputLabel>
             <Input
               onChange={this.handleChangeMail}
+              value = {this.state.email}
               fullWidth
               label="Your Mail"
               id="standard-adornment-password"
@@ -140,6 +165,7 @@ class Registrasi extends Component{
             <InputLabel htmlFor="standard-adornment-password">Your Password</InputLabel>
             <Input
               onChange={this.handleChangePassword}
+              value = {this.state.password}
               fullWidth
               label="Your Password"
               id="standard-adornment-password"
@@ -147,17 +173,17 @@ class Registrasi extends Component{
               />
             </div>  
             <Login ref={this.child} closeall={this.closehandle}></Login>
-            <Button variant="outlined" className={classes.buttonstyle}  >Registrasi</Button>
+            <Button variant="outlined" className={classes.buttonstyle} onClick={this.handleSignup} >sign-up</Button>
             <Typography className={classes.margintop}>Already Have Account 
             <Button onClick={this.onClick} className={classes.btnnomargin}>
-            Login
+            sign-in
             </Button>
             </Typography>
             <Typography variant="caption">To make Medium work, we log user data and share it with service providers. Click “Sign Up” above to accept Medium’s Terms of Service & Privacy Policy.</Typography>
           </DialogContent>
         </Grid>
         <Grid item xs={12} sm={3} align="right">
-
+          <img alt="right" src="https://miro.medium.com/max/214/1*XVLaTKHOGlnXqvnPe2Ahaw.png" />
         </Grid>
       </Grid>
       </Dialog>

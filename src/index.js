@@ -2,20 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Kategori from './pages/kategori';
-import Article from './pages/article';
-import Comment from './pages/comment';
-import Profile from './pages/profile';
+import Kategori from './_pages/kategori';
+import Article from './_pages/article';
+import Comment from './_pages/comment';
+import Profile from './_pages/profile';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router , Switch, Route,} from 'react-router-dom';
-import Addstory from './pages/addstory';
-import Story from './pages/story';
-import Bookmark from './pages/bookmark';
-import Stat from './pages/stat';
-import Home from './pages/home';
+import Addstory from './_pages/addstory';
+import Story from './_pages/story';
+import Bookmark from './_pages/bookmark';
+import Stat from './_pages/stat';
+import Home from './_pages/home';
+import { Provider } from "react-redux";
+import store from './store';
+
 
 
 ReactDOM.render( //<App/>  , document.getElementById('root'));
+            <Provider store={store}>
                <Router>
                     <Switch>
                         <Route exact path='/' component={App} ></Route>
@@ -29,7 +33,8 @@ ReactDOM.render( //<App/>  , document.getElementById('root'));
                         <Route path='/bookmark' component={Bookmark}></Route>
                         <Route path="/stat" component={Stat}></Route>
                     </Switch>
-                </Router>            
+                </Router>        
+            </Provider>
     , document.getElementById('root'));
 
 

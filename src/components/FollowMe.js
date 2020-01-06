@@ -138,6 +138,7 @@ class FollowMe extends Component {
               </Grid>
               <br/>
               <center>
+              
               <div style ={{flex: '1' , flexDirection : 'column', display : 'flex'}}>
               <Button variant="outlined"  color="secondary" href="/comment">SEE MORE</Button>
               </div>

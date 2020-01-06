@@ -1,0 +1,4 @@
+export const SHOW_ARTICLE = 'SHOW_ARTICLE';
+export const SHOW_POPULAR = 'SHOW_POPULAR';
+export const SHOW_CATEGORY = 'SHOW_CATEGORY';
+export const SHOW_ONE_CATEGORY = 'SHOW_ONE_CATEGORY';

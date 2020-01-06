@@ -8,6 +8,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from 'axios'
+import setAuth from '../auth/authorize'
+
 
 
 const MyStyle = (theme => ({
@@ -30,11 +32,13 @@ const MyStyle = (theme => ({
 
 
 
-class Registrasi extends Component{
+class Login extends Component{
   constructor(){
     super();          
     this.state ={
-      login : false
+      login : false,
+      open : false,
+      salah : ''
      
     }
     console.log(this.state.login)
@@ -45,9 +49,10 @@ class Registrasi extends Component{
       {
         login : false,
         email: '',
-        password: ''
-      }
+        password: '',  
+      } 
     )
+
   };
 
   openLogin = () => {
@@ -59,8 +64,17 @@ class Registrasi extends Component{
     )
     console.log(this.state.login)
   };
+  
+  handleClose = () => {
+    this.setState(
+      {
+        open : false,
+        
+      }
+    )
+  };
 
-
+  
   handleChangeMail = (event) => {
     this.setState({
       email: event.target.value
@@ -73,25 +87,37 @@ class Registrasi extends Component{
     })
   }
 
-
-  handleLogin = () => {
+  handleLogin = (event) => {
     axios.post('http://localhost:5000/api/v1/login', {
       email: this.state.email,
       password: this.state.password
     })
     .then(res => {
-      console.log(res.data)
+      const token = res.data.token;
+      console.log(res.data.user);
+      const users = res.data.user;
+      localStorage.setItem('Secret-Code', token);
+      localStorage.setItem('User-Id', users.id);
+      localStorage.setItem('User-Mail', users.email);
+      localStorage.setItem('User-Fullnam', users.fullname);
+      if(token){
+        setAuth(token);
+      }else{
+        this.setState({
+          salah : 'Password or Email wrong'
+        })
+      }
+
     })
     .catch(err => {
-      console.log(err)
+      console.log(err);
     })
+    event.preventDefault();
   }
 
   render(){
 
     const {classes} = this.props;
-    
-
 
     return(
         <div>
@@ -99,19 +125,18 @@ class Registrasi extends Component{
         this.props.closeall()} aria-labelledby="form-dialog-title" align="center" maxWidth="md" style={{backgroundColor: 'transparent'}} fullWidth> 
         <Grid container >
         <Grid item xs={12} sm={3} align="left">
-         
+         <img alt="left" src="https://miro.medium.com/max/214/1*MQH4A5bsyRz4AWh5V4IfvQ.png" />
         </Grid>
         <Grid item xs={12} sm={6}>
-        <Typography variant="h4" style={{paddingTop : "20pt"}}>Login Medium</Typography>
+        <Typography variant="h4" style={{paddingTop : "20pt"}}>Sign-In With Email</Typography>
         <Typography className={classes.margintop} color="textSecondary" variant="caption">Login to personalized story recommendations, follow authors and topics you love, and interact with stories.</Typography>
         <DialogContent style={{fontSize:"10pt"}}>       
-        <br/>
-        <br/> 
-            <div className={classes.margintop} style={{paddingTop:"30px"}}>
+         <font color="red">{this.state.salah}</font>          
+          < div className={classes.margintop}>
             <InputLabel htmlFor="standard-adornment-password">Your Mail</InputLabel>
             <Input
-              value={this.state.email}
               onChange={this.handleChangeMail}
+              value = {this.state.email}
               fullWidth
               label="Your Mail"
               id="standard-adornment-password"
@@ -122,18 +147,15 @@ class Registrasi extends Component{
             <div className={classes.margintop}>
             <InputLabel htmlFor="standard-adornment-password">Your Password</InputLabel>
             <Input
-              value={this.state.password} 
               onChange={this.handleChangePassword}
+              value={this.state.password} 
               fullWidth
               label="Your Password"
               id="standard-adornment-password"
               type='password'
               />
-            </div>  
-            <br/>
-            <Button variant="outlined" className={classes.buttonstyle} onClick={this.handleLogin} >Login</Button>
-            <br/>
-            <br/>
+            </div>     
+           <Button variant="outlined" className={classes.buttonstyle} onClick={this.handleLogin} >Login</Button>      
             <Typography className={classes.margintop}> Not Have Account ? <Button className={classes.btnnomargin} onClick={this.closehandle}>
             Register
             </Button>
@@ -142,14 +164,15 @@ class Registrasi extends Component{
           </DialogContent>
         </Grid>
         <Grid item xs={12} sm={3} align="right">
-       
+          <img alt="right" src="https://miro.medium.com/max/214/1*lhbp8cxKdkDB-MgmwIPE5w.png" />
         </Grid>
       </Grid>
       </Dialog>
-        </div>
+        
 
 
+    </div>
     );
   }
 }
-export default withStyles(MyStyle)(Registrasi)
+export default withStyles(MyStyle)(Login)

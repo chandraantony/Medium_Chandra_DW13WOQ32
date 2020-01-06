@@ -9,13 +9,14 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Container from '@material-ui/core/Container';
-import axios from 'axios';
 import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { fetchArticles } from '../_action/articleAction';
 
 
 const useStyles = (theme => ({
     root: {
-      paddingTop :"20px",
+      paddingTop :"40px",
       flexGrow: 1,
       borderBottom: 0,
       
@@ -79,35 +80,21 @@ const useStyles = (theme => ({
 
 class BodyHome extends Component {
 
-  constructor(){
-    super();
-    this.state = {
-      article: []
-    }
-    
-  }
-
   componentDidMount(){
-    axios.get(`http://localhost:5000/api/v1/articles`)
-      .then(res => {
-        const article = res.data;
-        this.setState({ article });
-      })
-
+    this.props.dispatch(fetchArticles());
   }
    
 
     render(){
         const {classes} = this.props;
-        const shuffle = shuffleArray(this.state.article)
+        const shuffle = shuffleArray(this.props.article)
         const shuffle1 = shuffleArray(shuffle)
-        const shuffle2 = shuffleArray(shuffle1)
-
+        console.log(this.props.article)
         return(
           
               <Container maxWidth="lg" >
                 <div className={classes.root} >
-                  <Grid container spacing={3} >
+                  <Grid container spacing={3}>
                   <Grid item xs={12} sm={4} >
                   {shuffle1.slice(0,1).map(section => (
                       <Card elevation={0} key={section.id} >
@@ -118,7 +105,7 @@ class BodyHome extends Component {
                             />
                         </CardActionArea>
                         <Paper className={classes.paper1} >
-                        <Typography  variant="h5"  component="h2">
+                        <Typography  variant="body1"  component="h2">
                                 <b>{section.title}</b>
                             </Typography>
                             <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
@@ -139,7 +126,7 @@ class BodyHome extends Component {
                     
                     <Grid item xs={12} sm={4}  >   
 
-                    {shuffle.slice(0,3).map(section => (
+                    {shuffle1.slice(0,3).map(section => (
                       <Grid container spacing={2} key={section.id} > 
                         <Grid item>
                           <ButtonBase className={classes.image}>
@@ -149,7 +136,7 @@ class BodyHome extends Component {
                         <Grid item xs={12} sm container>
                           <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
-                            <Typography  variant="subtitle1"  >
+                            <Typography  variant="body2"  >
                               <b>{section.title}</b>
                               </Typography>
                               <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
@@ -171,27 +158,27 @@ class BodyHome extends Component {
                     </Grid>
 
                     <Grid item xs={12} sm={4}>
-                    {shuffle2.slice(0,1).map(section => (
-                      <Card elevation={0} key={section.id} >
+                    {this.props.article.slice(0,1).map(section2 => (
+                      <Card elevation={0} key={section2.id} >
                         <CardActionArea to="/article">
                             <CardMedia
                             className={classes.media}
-                            image={section.image}
+                            image={section2.image}
                             />
                         </CardActionArea>
                         <Paper className={classes.paper1} >
-                        <Typography  variant="h5"  component="h2">
-                                <b>{section.title}</b>
+                        <Typography  variant="body1"  component="h2">
+                                <b>{section2.title}</b>
                             </Typography>
                             <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
-                                {section.title}               
+                                {section2.title}               
                             </Typography>
                             <br/>
                             <Typography style={{fontSize : "9pt"}} > 
-                            {section.author_Id.fullname} in {section.category_Id.name}     
+                            {section2.author_Id.fullname} in {section2.category_Id.name}     
                             </Typography>
                             <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
-                            <Moment format="D MMM YYYY">{section.createdAt}</Moment>
+                            <Moment format="D MMM YYYY">{section2.createdAt}</Moment>
                             </Typography>
                         </Paper>
                       </Card>
@@ -213,4 +200,12 @@ class BodyHome extends Component {
     }
 }
 
-export default withStyles(useStyles)(BodyHome)
+const mapStateToProps = state => ({
+  article : state.articleReducer.all
+  
+}
+
+)
+
+
+export default connect(mapStateToProps)(withStyles(useStyles)(BodyHome))

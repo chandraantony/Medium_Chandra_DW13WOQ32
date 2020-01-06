@@ -8,9 +8,9 @@ import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import axios from 'axios';
 import Moment from 'react-moment';
-
+import { connect } from 'react-redux'
+import {fetchPopular} from '../_action/articleAction'
 
 const useStyles = (theme => ({
     root: {
@@ -60,21 +60,10 @@ const useStyles = (theme => ({
 
 class BodyHome1 extends Component {
 
-    constructor(){
-        super();
-        this.state = {
-          article: []
-        }
-        
-      }
+
     
       componentDidMount(){
-        axios.get(`http://localhost:5000/api/v1/articles/popular`)
-          .then(res => {
-            const article = res.data;
-            this.setState({ article });
-          })
-    
+        this.props.dispatch(fetchPopular());
       }
 
     render(){
@@ -87,13 +76,13 @@ class BodyHome1 extends Component {
                 <Grid item xs  > 
 
                     <Paper className={classes.paper1}>
-                    <Typography variant="h5" >
+                    <Typography variant="subtitle1" >
                         <b>Popular on Medium</b>
 
                             <hr></hr>
     
                     </Typography>
-                    {this.state.article.slice(0,10).map(section => (
+                    {this.props.popular.slice(0,10).map(section => (
                     <Grid container spacing={2} style={{paddingTop : "10pt"}} key={section.id}>
                         
                         <Grid item >
@@ -107,7 +96,7 @@ class BodyHome1 extends Component {
                             <Typography  variant="subtitle1"  component="h5">
                                 <b>{section.title}</b>
                             </Typography>
-                            <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
+                            <Typography  color="textSecondary" style={{fontSize : "8pt"}}>
                             {section.title}              
                             </Typography>
                             <br/>
@@ -128,7 +117,7 @@ class BodyHome1 extends Component {
                     </Grid> 
 
                     <Grid item xs={9}>
-                    {this.state.article.map(section => (
+                    {this.props.article.map(section => (
                     <Paper className={classes.card} elevation={0} key={section.id}> 
                     <Grid container spacing={2} >
                         <Grid item xs={12} sm >
@@ -138,7 +127,7 @@ class BodyHome1 extends Component {
                             <Typography style={{fontSize : "10pt"}} color="textSecondary">
                             {section.category_Id.name} <i>Popular Topic</i>
                             </Typography>
-                            <Typography variant="h5" >
+                            <Typography variant="subtitle1" >
                                 <b>{section.title}</b>
                             </Typography>
                             <Typography  color="textSecondary" style={{fontSize : "10pt"}}>
@@ -183,6 +172,18 @@ class BodyHome1 extends Component {
             </div>
         )
     }
+
+    
+
 }
 
-export default withStyles(useStyles)(BodyHome1);
+const mapStateToProps = state => ({
+  popular : state.articleReducer.popular,
+  article : state.articleReducer.all
+  
+}
+
+)
+
+
+export default connect(mapStateToProps)(withStyles(useStyles)(BodyHome1));

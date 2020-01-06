@@ -98,6 +98,15 @@ const useStyles = (theme => ({
   
     linkstyle :{
       textDecoration : "none", color: "black"
+    },
+    btnstyle :{
+      marginTop : "5pt",
+      maxHeight: '30px', 
+      minHeight: '30px',
+      fontSize :  "10pt",
+      color : "#2e7d32",
+      borderColor :   "#2e7d32",
+      
     }
   
   
@@ -233,15 +242,15 @@ class Nav extends Component {
                 </div>
                 <div className={classes.grow} />
                 <div className={classes.sectionDesktop}>
-
+{/* 
                 <Registrasi ref={this.child}/>
-                  <Button onClick={this.onClick}>Registrasi</Button>
+                  <Button className={classes.btnstyle} onClick={this.onClick} variant="outlined">Sign-Up</Button> */}
                  
-                  <IconButton aria-label="show 17 new notifications" color="inherit">
+                  {/* <IconButton aria-label="show 17 new notifications" color="inherit">
                     <Badge badgeContent={17} color="secondary">
                       <NotificationsIcon />
                     </Badge>
-                  </IconButton>
+                  </IconButton> */}
                   <IconButton
                     edge="end"
                     aria-label="account of current user"

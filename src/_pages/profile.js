@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 import ArticleList from '../components/ArticleList';
 import ProfileBar from '../components/ProfileBar';
 import Nav from '../layout/Nav';
+import  {connect} from 'react-redux'
 
 class Profile extends Component{
   render(){
@@ -15,4 +16,4 @@ class Profile extends Component{
     );
   }
 }
-export default Profile;
+export default connect()(Profile);

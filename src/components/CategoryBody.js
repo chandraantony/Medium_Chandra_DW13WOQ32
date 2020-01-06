@@ -9,8 +9,10 @@ import Button from '@material-ui/core/Button';
 import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import axios from 'axios';
 import Moment from 'react-moment';
+import { connect } from 'react-redux';
+import { fetchOneCategory } from '../_action/categoryAction'
+
 
 const useStyles = (theme => ({
     root: {
@@ -88,22 +90,12 @@ const useStyles = (theme => ({
 
 class CategoryBody extends Component {
   
-  constructor(){
-    super();
-    this.state = {
-      article: [],
-    }
-    
-  }
+
 
   componentDidMount(){
     const id = this.props.jambuid;
-    axios.get(`http://localhost:5000/api/v1/article/${id}`)
-      .then(res => {
-        const article = res.data;
-        this.setState({ article });
-      })
-      
+    this.props.dispatch(fetchOneCategory(id))
+  
 
   }
   render(){
@@ -114,12 +106,13 @@ class CategoryBody extends Component {
     return(
       <div className={classes.root}> 
           <Container maxWidth="md">
-          <Grid container spacing={1}  >
+          {this.props.oneCategory.slice(0,1).map(section => (  
+          <Grid container spacing={1}  key={section.id}  >
               <Grid item xs={12} >
               <Paper className={classes.card} >
               <Grid >
                   <ButtonBase className={classes.image} >
-                      <img className={classes.img} alt="complex" src="https://miro.medium.com/max/540/1*cw32fIqCbRWzwJaoQw6BUg.png" />
+                      <h1 style={{color: '#bf28a6'}}>{section.category_Id.name}</h1>
                     </ButtonBase>
                   </Grid>
                 <Grid container spacing={0}>
@@ -127,11 +120,11 @@ class CategoryBody extends Component {
                     <Grid item xs container direction="column" spacing={2}>
                       <Grid item xs >
                       <div style={{paddingTop:"15pt"}} >
-                        <Typography variant="h6" > 
-                        {this.state.article.slice(0,1).map(section => ( 
-                          <font color="#bf28a6" key={section.id}>{section.category_Id.name}</font>
-                        ),)} 
-                          A Medium publication about
+                        <Typography variant="h6" >       
+                          <font color="#bf28a6" >Medium</font>
+                        </Typography>  
+                        <Typography variant="h6" >       
+                          Share Everything You Want
                         </Typography>  
                       </div>  
                       </Grid>
@@ -152,14 +145,15 @@ class CategoryBody extends Component {
               </Paper>
               </Grid>
             </Grid>
-
-            <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+          ),)}
+            {this.props.oneCategory.slice(0,1).map(section => (                  
+            <Grid container spacing={0} style={{paddingTop :"20pt"}} key={section.id} >
               <Grid item xs={12} sm={7} >
               <Card>
               <CardActionArea>
                       <CardMedia
                       className={classes.media}
-                      image="https://miro.medium.com/max/1280/1*pUHXuHQ7lGyXPmUcQJTQHg.gif"
+                      image={section.image}
                       />
               </CardActionArea>
               </Card>
@@ -168,35 +162,36 @@ class CategoryBody extends Component {
                 <Paper className={classes.media} style={{backgroundColor:"#00ffbf" }}>
                   <div align="center" style={{padding :"10pt"}} >
                         <Typography variant="subtitle1" > 
-                          <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
+                          <b>{section.title}</b>
                         </Typography>
                         <Typography style={{fontSize :"10pt", }}> 
                         <br></br>
-                        - Megan Marrone
+                        - {section.author_Id.fullname}
                         <br/>
-                        Alexa Is My Problematic Fave
+                        {section.title}
                         <br/>
-                        Dec 9 . 6 min read
+                        <Moment format="D MMM YYYY">{section.createdAt}</Moment>  
                         </Typography>
                   </div> 
               </Paper>
               </Grid>
             </Grid>
-
-            <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+            ),)}
+            {this.props.oneCategory.slice(1,2).map(section => ( 
+            <Grid container spacing={0} style={{paddingTop :"20pt"}} key={section.id}>
               <Grid item xs={12} sm={5}>
                 <Paper className={classes.media} style={{backgroundColor:"#b3b3ff" }}>
                 <div style={{padding :"10pt"}} align="center" >
                         <Typography variant="subtitle1" > 
-                        <b>Even my oldest Echo, at five years old, works perfectly. This shouldn’t be a shocking revelation, but for a piece of technology these days, it is.</b>
+                        <b>{section.title}</b>
                         </Typography>
                         <Typography style={{fontSize :"10pt", }}> 
                         <br></br>
-                        - Megan Marrone
+                        -  {section.author_Id.fullname}
                         <br/>
-                        Alexa Is My Problematic Fave
+                        {section.titele}
                         <br/>
-                        Dec 9 . 6 min read
+                        <Moment format="D MMM YYYY">{section.createdAt}</Moment>   
                         </Typography>
                   </div> 
                 </Paper>
@@ -206,13 +201,13 @@ class CategoryBody extends Component {
               <CardActionArea>
                       <CardMedia
                       className={classes.media}
-                      image="https://miro.medium.com/max/2400/1*FmMLsjcukXpE2EtT-lV2Sw.jpeg"
+                      image={section.image}
                       />
               </CardActionArea>
               </Card>
               </Grid>
             </Grid>
-            
+            ),)}
             <Grid container spacing={1} style={{paddingTop :"20pt"}}>
               <Grid item xs={12} >
               <Paper className={classes.card} style={{backgroundColor :"#ffffb3"}} >
@@ -271,40 +266,29 @@ class CategoryBody extends Component {
               </Card>
               </Grid>
             </Grid>
-           
-            <Grid container spacing={0} style={{paddingTop :"20pt"}}>
+            {this.props.oneCategory.slice(0,2).map(section => ( 
+            <Grid container spacing={0} style={{paddingTop :"20pt"}} key={section.id}>
               <Grid item xs={12}>
               <Card>
               <CardActionArea>
                       <CardMedia
                       className={classes.media}
-                      image="https://miro.medium.com/max/1280/1*b_7aV5Q_KjfkY6uVPby4Jg.gif"
+                      image={section.image}
                       />
               </CardActionArea>
               </Card>
               </Grid>  
             </Grid>
+            ),)}
 
-            <Grid container spacing={0} style={{paddingTop :"20pt"}}>
-              <Grid item xs={12}>
-              <Card>
-              <CardActionArea>
-                      <CardMedia
-                      className={classes.media}
-                      image="https://miro.medium.com/max/1920/1*bNjaA_7cA-VEplEfb4rdwQ.gif"
-                      />
-              </CardActionArea>
-              </Card>
-              </Grid>  
-            </Grid>
            
 
             
             <Container maxWidth="sm" style={{paddingTop:"30pt", paddingBottom:"30pt"}} >
             <hr/>
-            {this.state.article.map(section => (  
+            {this.props.oneCategory.map(section => (  
             
-            <Grid container spacing={0} style={{paddingTop :"10pt"}} key={section.id}>
+            <Grid container spacing={0} style={{paddingTop :"10pt"}} key={section.id} >
               <Grid item xs={12} sm={9}>
               <Paper elevation={0}>
                   <Typography  variant="subtitle1"  >
@@ -350,7 +334,10 @@ class CategoryBody extends Component {
     )
   }
 }
+const mapStateToProps = state => ({
+  oneCategory : state.categoryReducer.one 
+}
+)
 
 
-
-export default withStyles(useStyles)(CategoryBody)
+export default connect(mapStateToProps)(withStyles(useStyles)(CategoryBody))
